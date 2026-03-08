@@ -1,0 +1,327 @@
+:root {
+    --primary: #E0AD08;
+    --primary-dark: #C99800;
+    --primary-soft: #F2D05E;
+    --bg: #0E0E0E;
+    --surface: rgba(30, 30, 30, 0.65);
+    --text: #FFFFFF;
+    --text-muted: rgba(255, 255, 255, 0.88);
+    --border: rgba(255, 255, 255, 0.85);
+    --shadow: rgba(0, 0, 0, 0.24);
+    --radius-pill: 999px;
+    --radius-xl: 28px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: clamp(1rem, 2.2vw, 1.5rem);
+    line-height: 1.6;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Header ──────────────────────────────────────────── */
+
+.header {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: auto;
+    max-width: 680px;
+}
+
+.header-shell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-pill);
+    padding: 8px 12px 8px 80px;
+    position: relative;
+}
+
+/* ── Logo ─────────────────────────────────────────────── */
+
+.logo {
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    display: block;
+}
+
+.logo-ring {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 4px 24px var(--shadow);
+}
+
+.logo-img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+}
+
+.logo-fallback {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* ── Nav ──────────────────────────────────────────────── */
+
+.nav {
+    display: none;
+    gap: 4px;
+}
+
+.nav a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    transition: color 0.2s, background 0.2s;
+}
+
+.nav a:hover {
+    color: var(--primary-soft);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Auth Pill ────────────────────────────────────────── */
+
+.auth-pill {
+    display: flex;
+    gap: 0;
+    border: 2px solid var(--primary);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+}
+
+.auth-pill a {
+    color: var(--bg);
+    background: var(--primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 8px 18px;
+    transition: background 0.2s;
+}
+
+.auth-pill a:first-child {
+    border-right: 1px solid var(--primary-dark);
+}
+
+.auth-pill a:hover {
+    background: var(--primary-dark);
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+
+.hero {
+    position: relative;
+    flex: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 128px 24px 80px;
+    /* PLACEHOLDER: Replace with your hero background image */
+    background: url('../public/images/hero-bg.jpg') center / cover no-repeat;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.55) 0%,
+        rgba(10, 10, 10, 0.40) 50%,
+        rgba(10, 10, 10, 0.65) 100%
+    );
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    text-align: center;
+}
+
+.eyebrow {
+    font-size: clamp(1rem, 2vw, 1.375rem);
+    font-style: italic;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+}
+
+.eyebrow span {
+    color: var(--primary);
+    font-weight: 700;
+    font-style: normal;
+}
+
+#hero-title {
+    margin-top: 12px;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1.1;
+    color: var(--text);
+}
+
+#hero-title span {
+    color: var(--primary);
+}
+
+.description {
+    margin-top: 20px;
+    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+    color: var(--text-muted);
+    font-style: italic;
+    max-width: 580px;
+    margin-inline: auto;
+    line-height: 1.7;
+}
+
+.hero-actions {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+/* ── Buttons ──────────────────────────────────────────── */
+
+.btn {
+    min-width: 220px;
+    min-height: 54px;
+    padding: 12px 28px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 800;
+    border: 2px solid transparent;
+    transition: transform 0.15s, background 0.2s;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--border);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* ── Gold Bar ─────────────────────────────────────────── */
+
+.gold-bar {
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary), var(--primary-dark));
+    flex-shrink: 0;
+}
+
+/* ── Focus ────────────────────────────────────────────── */
+
+.btn:focus-visible,
+.nav a:focus-visible,
+.auth-pill a:focus-visible,
+.logo:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+
+@media (min-width: 768px) {
+    .header {
+        top: 24px;
+        max-width: 720px;
+    }
+
+    .header-shell {
+        padding: 10px 16px 10px 110px;
+        gap: 16px;
+    }
+
+    .logo-ring {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logo-img {
+        width: 68px;
+        height: 68px;
+    }
+
+    .nav {
+        display: flex;
+    }
+
+    .hero-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

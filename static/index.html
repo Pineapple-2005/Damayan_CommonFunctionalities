@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="DAMAYAN helps communities stay safe, stay informed, and stay united through disaster alerts, reporting, and evacuation support." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>DAMAYAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="header-shell">
+                <a class="logo" href="#home" aria-label="DAMAYAN home">
+                    <div class="logo-ring">
+                        <!-- Replace src with your logo image -->
+                        <img class="logo-img" src="../public/images/logo.png" alt="DAMAYAN logo"
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                        <span class="logo-fallback" style="display:none">D</span>
+                    </div>
+                </a>
+
+                <nav class="nav" aria-label="Primary navigation">
+                    <a href="#home">Home</a>
+                    <a href="#about">About Us</a>
+                </nav>
+
+                <div class="auth-pill">
+                    <a href="#signup">Sign Up</a>
+                    <a href="#login">Log In</a>
+                </div>
+            </div>
+        </header>
+
+        <main id="home" class="hero">
+            <div class="hero-overlay"></div>
+            <section class="hero-content" aria-labelledby="hero-title">
+                <p class="eyebrow">
+                    Welcome To <span>DAMAYAN</span>
+                </p>
+
+                <h1 id="hero-title">
+                    Stay <span>Safe</span>, Stay <span>Informed</span>,
+                    Stay <span>United</span>.
+                </h1>
+
+                <p class="description">
+                    Together, we can protect lives by ensuring timely alerts, clear reporting, and
+                    safe evacuations. Your vigilance today saves communities tomorrow.
+                </p>
+
+                <div class="hero-actions">
+                    <button id="viewReportsBtn" class="btn btn-primary" type="button">View Reports</button>
+                    <button id="reportIncidentBtn" class="btn btn-secondary" type="button">Report an Incident</button>
+                </div>
+            </section>
+        </main>
+
+        <div class="gold-bar"></div>
+    </div>
+</body>
+
+</html>
