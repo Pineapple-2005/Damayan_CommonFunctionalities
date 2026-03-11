@@ -1,0 +1,13 @@
+{
+  "name": "damayan-platform",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:web": "node scripts/clean-web-cache.js && npm run dev --workspace web",
+    "dev:mobile": "npm run dev --workspace mobile",
+    "build:web": "npm run build --workspace web",
+    "lint:web": "npm run lint --workspace web"
+  }
+}

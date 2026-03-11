@@ -1,0 +1,327 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #ffc300;
+}
+
+.heroMedia {
+  position: absolute;
+  inset: 0 0 64px;
+}
+
+.heroImage {
+  position: absolute;
+  inset: -1.5% -3% 0;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    url("/images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px);
+  transform: scale(1.035);
+}
+
+.heroImage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.heroImage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 58%, rgba(255, 255, 255, 0.12), transparent 12%),
+    radial-gradient(circle at 54% 48%, rgba(255, 158, 62, 0.24), transparent 18%),
+    radial-gradient(circle at 78% 56%, rgba(255, 255, 255, 0.14), transparent 14%),
+    linear-gradient(90deg, rgba(34, 28, 14, 0.15), rgba(34, 28, 14, 0.02) 22%, rgba(34, 28, 14, 0.1) 72%, rgba(34, 28, 14, 0.22));
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(37, 29, 0, 0.42);
+}
+
+.bottomBand {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  background: #ffc300;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 28px 44px 86px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: min(100%, 640px);
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navPill {
+  width: 100%;
+  min-height: 80px;
+  border-radius: 999px;
+  background: rgba(215, 164, 0, 0.82);
+  box-shadow: 0 18px 38px rgba(36, 28, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 238px 0 110px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transform: translateX(0);
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.nav a,
+.nav button {
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.navLink {
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 116px;
+  min-height: 48px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navLink:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.authHighlight {
+  position: absolute;
+  right: 14px;
+  top: 11px;
+  height: 57px;
+  width: 234px;
+  border-radius: 999px;
+  background: white;
+}
+
+.logoRing {
+  position: absolute;
+  left: -52px;
+  top: -20px;
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  background: #ffc300;
+  z-index: 3;
+}
+
+.logoInner {
+  position: absolute;
+  left: -42px;
+  top: -10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 999px;
+  background: white;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  z-index: 4;
+}
+
+.logoMark {
+  font-size: 15px;
+  font-weight: 800;
+  color: #b58a00;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.logoImage {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.authNav {
+  position: absolute;
+  right: 12px;
+  top: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.authLink {
+  width: 108px;
+  text-align: center;
+  color: #9c7700;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.content {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 18px 20px 40px;
+}
+
+.heroBlock {
+  width: 100%;
+}
+
+.intro {
+  margin: 0 0 18px;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 600;
+  color: white;
+}
+
+.intro strong {
+  font-style: normal;
+  color: #ffc300;
+  font-weight: 900;
+}
+
+.headline {
+  max-width: 940px;
+  margin: 0 auto;
+  color: white;
+  font-size: clamp(3.25rem, 5.6vw, 4.55rem);
+  line-height: 1.06;
+  font-weight: 700;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.headline span {
+  color: #ffc300;
+}
+
+.support {
+  max-width: 700px;
+  margin: 24px auto 0;
+  color: white;
+  font-size: 17px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.aboutAnchor {
+  scroll-margin-top: 120px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 38px;
+  margin-top: 44px;
+  flex-wrap: wrap;
+}
+
+.primaryAction,
+.secondaryAction {
+  min-width: 180px;
+  min-height: 54px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30px;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.primaryAction {
+  background: rgba(215, 164, 0, 0.82);
+  color: white;
+}
+
+.secondaryAction {
+  min-width: 252px;
+  border: 2px solid white;
+  color: #ffc300;
+}
+
+@media (max-width: 900px) {
+  .overlay {
+    padding: 22px 16px 74px;
+  }
+
+  .header {
+    width: 100%;
+  }
+
+  .navPill {
+    min-height: unset;
+    border-radius: 32px;
+    padding: 94px 18px 18px;
+  }
+
+  .authHighlight {
+    left: 18px;
+    right: 18px;
+    top: 18px;
+    width: auto;
+    height: 56px;
+  }
+
+  .logoRing {
+    left: 50%;
+    top: -14px;
+    transform: translateX(-50%);
+  }
+
+  .logoInner {
+    left: 50%;
+    top: -4px;
+    transform: translateX(-50%);
+  }
+
+  .nav,
+  .authNav {
+    position: static;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    transform: none;
+  }
+
+  .content {
+    padding-top: 30px;
+  }
+}
