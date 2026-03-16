@@ -1,9 +1,9 @@
 # Damayan Workspace
 
-This repository now contains a real two-app structure you can extend:
+This repository now contains a separated two-app structure:
 
-- `apps/web`: Next.js App Router project for the browser
-- `apps/mobile`: Expo Router project for Android, iOS, and Expo web
+- `web`: Next.js App Router project for the browser
+- `mobile`: Expo Router project for Android, iOS, and Expo web
 
 The original standalone files are still in the root for reference:
 
@@ -13,7 +13,7 @@ The original standalone files are still in the root for reference:
 
 ## Included flows
 
-Both apps now include:
+Both apps include:
 
 - Login
 - Sign up
@@ -32,17 +32,16 @@ You can also create a new account in each app and continue to the dashboard.
 
 ```text
 .
-├── apps
-│   ├── mobile
-│   │   ├── app
-│   │   └── src
-│   └── web
-│       ├── app
-│       ├── components
-│       └── lib
-├── LoginPage.tsx
-├── LoginScreen.tsx
-└── preview.html
+|-- mobile
+|   |-- app
+|   `-- src
+|-- web
+|   |-- app
+|   |-- components
+|   `-- lib
+|-- LoginPage.tsx
+|-- LoginScreen.tsx
+`-- preview.html
 ```
 
 ## Install
@@ -73,34 +72,34 @@ Then use Expo to open Android, iOS, or web.
 
 ### Web
 
-Add routes in `apps/web/app`.
+Add routes in `web/app`.
 
 Examples:
 
-- `apps/web/app/profile/page.tsx`
-- `apps/web/app/requests/page.tsx`
-- `apps/web/app/settings/page.tsx`
+- `web/app/profile/page.tsx`
+- `web/app/requests/page.tsx`
+- `web/app/settings/page.tsx`
 
 ### Mobile
 
-Add screens in `apps/mobile/app`.
+Add screens in `mobile/app`.
 
 Examples:
 
-- `apps/mobile/app/profile.tsx`
-- `apps/mobile/app/requests.tsx`
-- `apps/mobile/app/settings.tsx`
+- `mobile/app/profile.tsx`
+- `mobile/app/requests.tsx`
+- `mobile/app/settings.tsx`
 
-Shared mobile UI can live under `apps/mobile/src`.
+Shared mobile UI can live under `mobile/src`.
 
 ## Replacing mock auth with a real backend
 
 ### Web
 
-Auth state lives in `apps/web/lib/auth-context.tsx`.
+Auth state lives in `web/lib/auth-context.tsx`.
 
 ### Mobile
 
-Auth state lives in `apps/mobile/src/providers/auth-provider.tsx`.
+Auth state lives in `mobile/src/providers/auth-provider.tsx`.
 
 Replace the mock `login` and `signup` functions there with your real API calls.

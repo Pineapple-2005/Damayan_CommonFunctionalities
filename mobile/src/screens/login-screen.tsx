@@ -68,7 +68,7 @@ export function LoginScreen() {
       subtitle="Use demo credentials: demo@damayan.app / password123"
       footer={
         <>
-          <Text style={{ fontSize: 11 }}>Don't have an account? </Text>
+          <Text style={{ fontSize: 11, color: "#FFFFFF" }}>Don't have an account? </Text>
           <TouchableOpacity onPress={() => router.push("/signup")}>
             <Text style={{ fontSize: 11, fontWeight: "700", color: COLORS.primaryDark }}>
               Sign Up
@@ -144,3 +144,4 @@ export function LoginScreen() {
     </AuthShell>
   );
 }
+

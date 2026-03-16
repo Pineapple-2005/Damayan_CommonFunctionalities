@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { authStyles } from "@/src/components/auth-shell";
 
 export function SocialRow() {
@@ -6,19 +6,19 @@ export function SocialRow() {
     <>
       <View style={authStyles.dividerRow}>
         <View style={authStyles.dividerLine} />
-        <Text style={authStyles.dividerText}>OR</Text>
+        <Text style={authStyles.dividerText}>or continue with</Text>
         <View style={authStyles.dividerLine} />
       </View>
 
       <View style={authStyles.socialRow}>
         <TouchableOpacity style={authStyles.socialButton} accessibilityLabel="Continue with Google">
-          <Text style={[authStyles.socialText, { color: "#EA4335" }]}>G</Text>
+          <Image source={require("@/assets/icons/google.png")} style={authStyles.socialIcon} />
         </TouchableOpacity>
         <TouchableOpacity style={authStyles.socialButton} accessibilityLabel="Continue with Apple">
-          <Text style={authStyles.socialText}>O</Text>
+          <Image source={require("@/assets/icons/apple.png")} style={authStyles.socialIcon} />
         </TouchableOpacity>
         <TouchableOpacity style={authStyles.socialButton} accessibilityLabel="Continue with Facebook">
-          <Text style={[authStyles.socialText, { color: "#4285F4" }]}>f</Text>
+          <Image source={require("@/assets/icons/facebook.png")} style={authStyles.socialIcon} />
         </TouchableOpacity>
       </View>
     </>

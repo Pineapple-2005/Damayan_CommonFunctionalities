@@ -1,0 +1,6 @@
+The following packages should be updated for best compatibility with the installed expo version:
+  expo-router@5.0.7 - expected version: ~5.1.11
+  expo-status-bar@2.0.1 - expected version: ~2.2.3
+  react-native@0.79.0 - expected version: 0.79.6
+  typescript@5.8.2 - expected version: ~5.8.3
+Your project may not work correctly until you install the expected versions of the packages.
