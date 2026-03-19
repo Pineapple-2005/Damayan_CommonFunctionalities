@@ -19,6 +19,8 @@ type AuthShellProps = {
   showBranding?: boolean;
   compactLogo?: boolean;
   headerTop?: ReactNode;
+  noScroll?: boolean;
+  centered?: boolean;
 };
 
 export function AuthShell({
@@ -29,7 +31,51 @@ export function AuthShell({
   showBranding = true,
   compactLogo = false,
   headerTop,
+  noScroll = false,
+  centered = true,
 }: AuthShellProps) {
+  const contentStyle = [
+    styles.scrollContent,
+    centered ? styles.scrollCentered : styles.scrollTop,
+    noScroll ? styles.scrollNoGrow : null,
+  ];
+
+  const body = (
+    <>
+      <View style={[styles.logoWrap, compactLogo ? styles.logoWrapCompact : null]}>
+        <View style={[styles.logoRing, compactLogo ? styles.logoRingCompact : null]} />
+        <View style={[styles.logoBadge, compactLogo ? styles.logoBadgeCompact : null]}>
+          <Image
+            source={require("@/assets/logos/logo.png")}
+            style={[styles.logoImage, compactLogo ? styles.logoImageCompact : null]}
+            resizeMode="contain"
+          />
+        </View>
+      </View>
+
+      <View style={[styles.card, !showBranding ? styles.cardMinimal : null]}>
+        {headerTop ? <View style={styles.headerTop}>{headerTop}</View> : null}
+
+        {showBranding ? (
+          <View style={styles.brandBlock}>
+            <Text style={styles.welcome}>Welcome to</Text>
+            <Text style={styles.brand}>DAMAYAN</Text>
+          </View>
+        ) : null}
+
+        <Text style={[styles.title, !showBranding ? styles.titleMinimal : null]}>{title}</Text>
+        {subtitle ? (
+          <Text style={[styles.subtitle, !showBranding ? styles.subtitleMinimal : null]}>
+            {subtitle}
+          </Text>
+        ) : null}
+        {children}
+      </View>
+
+      {footer ? <View style={styles.footer}>{footer}</View> : null}
+    </>
+  );
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.background}>
@@ -42,43 +88,17 @@ export function AuthShell({
         style={styles.flex}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={styles.scrollContent}
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={[styles.logoWrap, compactLogo ? styles.logoWrapCompact : null]}>
-            <View style={[styles.logoRing, compactLogo ? styles.logoRingCompact : null]} />
-            <View style={[styles.logoBadge, compactLogo ? styles.logoBadgeCompact : null]}>
-              <Image
-                source={require("@/assets/logos/logo.png")}
-                style={[styles.logoImage, compactLogo ? styles.logoImageCompact : null]}
-                resizeMode="contain"
-              />
-            </View>
-          </View>
-
-          <View style={[styles.card, !showBranding ? styles.cardMinimal : null]}>
-            {headerTop ? <View style={styles.headerTop}>{headerTop}</View> : null}
-
-            {showBranding ? (
-              <View style={styles.brandBlock}>
-                <Text style={styles.welcome}>Welcome to</Text>
-                <Text style={styles.brand}>DAMAYAN</Text>
-              </View>
-            ) : null}
-
-            <Text style={[styles.title, !showBranding ? styles.titleMinimal : null]}>{title}</Text>
-            {subtitle ? (
-              <Text style={[styles.subtitle, !showBranding ? styles.subtitleMinimal : null]}>
-                {subtitle}
-              </Text>
-            ) : null}
-            {children}
-          </View>
-
-          {footer ? <View style={styles.footer}>{footer}</View> : null}
-        </ScrollView>
+        {noScroll ? (
+          <View style={contentStyle}>{body}</View>
+        ) : (
+          <ScrollView
+            keyboardShouldPersistTaps="handled"
+            contentContainerStyle={contentStyle}
+            showsVerticalScrollIndicator={false}
+          >
+            {body}
+          </ScrollView>
+        )}
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -265,12 +285,21 @@ const styles = StyleSheet.create({
     right: -90,
   },
   scrollContent: {
-    flexGrow: 1,
     alignItems: "center",
-    justifyContent: "center",
     paddingHorizontal: 20,
     paddingTop: 30,
     paddingBottom: 28,
+  },
+  scrollCentered: {
+    flexGrow: 1,
+    justifyContent: "center",
+  },
+  scrollTop: {
+    flexGrow: 1,
+    justifyContent: "flex-start",
+  },
+  scrollNoGrow: {
+    flex: 1,
   },
   logoWrap: {
     marginBottom: -58,
@@ -385,5 +414,3 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-
-

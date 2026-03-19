@@ -1,11 +1,11 @@
 .page {
   position: relative;
-  min-height: 100vh;
+  height: 100svh;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px 18px;
+  padding: 18px;
 }
 
 .background {
@@ -24,7 +24,7 @@
   position: relative;
   z-index: 1;
   width: min(580px, 100%);
-  padding-top: 84px;
+  padding-top: 72px;
 }
 
 .logoRing {
@@ -32,8 +32,8 @@
   left: 50%;
   top: 0;
   transform: translateX(-50%);
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   border-radius: 999px;
   background: #ffc300;
   z-index: 3;
@@ -42,10 +42,10 @@
 .logoInner {
   position: absolute;
   left: 50%;
-  top: 10px;
+  top: 9px;
   transform: translateX(-50%);
-  width: 100px;
-  height: 100px;
+  width: 92px;
+  height: 92px;
   border-radius: 999px;
   background: white;
   display: grid;
@@ -54,63 +54,72 @@
   z-index: 4;
 }
 
-.logoMark {
-  font-size: 15px;
-  font-weight: 900;
-  color: #b58a00;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .logoImage {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
 }
 
 .card {
   background: white;
-  border-radius: 40px;
-  min-height: 593px;
-  padding: 102px 42px 42px;
+  border-radius: 34px;
+  min-height: 520px;
+  padding: 86px 36px 36px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
   text-align: center;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .illustrationImage {
-  width: min(470px, 100%);
-  height: 268px;
-  margin: 0 auto 20px;
+  width: min(420px, 100%);
+  height: 220px;
+  margin: 0 auto 18px;
   object-fit: contain;
 }
 
 .headline {
   margin: 0;
-  font-size: 36px;
+  font-size: clamp(1.7rem, 3.2vw, 2.25rem);
   line-height: 1.15;
   font-weight: 600;
 }
 
 .message {
-  max-width: 470px;
-  margin: 18px auto 0;
+  max-width: 440px;
+  margin: 14px auto 0;
   color: #4a5565;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.45;
   font-weight: 300;
 }
 
 .action {
-  width: min(400px, 100%);
-  min-height: 50px;
-  margin-top: 36px;
+  width: min(360px, 100%);
+  min-height: 46px;
+  margin-top: 26px;
   border: 1px solid #a9a9a9;
-  border-radius: 15px;
+  border-radius: 14px;
   background: #ffc300;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .page {
+    min-height: 100svh;
+    height: auto;
+    overflow: auto;
+  }
+
+  .card {
+    min-height: auto;
+    padding: 82px 22px 24px;
+  }
 }

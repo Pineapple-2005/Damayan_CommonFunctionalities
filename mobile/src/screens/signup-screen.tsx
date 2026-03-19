@@ -73,6 +73,8 @@ export function SignupScreen() {
     <AuthShell
       title="SIGN UP & VERIFY"
       subtitle="Create account details and upload your verification document."
+      noScroll
+      centered
       footer={
         <>
           <Text style={{ fontSize: 11 }}>Already have an account? </Text>
@@ -91,32 +93,59 @@ export function SignupScreen() {
       ) : null}
 
       <View style={authStyles.field}>
-        <TextInput value={email} onChangeText={setEmail} placeholder="Email Address*" style={authStyles.input} keyboardType="email-address" autoCapitalize="none" />
+        <TextInput
+          value={email}
+          onChangeText={setEmail}
+          placeholder="Email Address*"
+          style={authStyles.input}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
       </View>
       <View style={authStyles.field}>
         <TextInput value={name} onChangeText={setName} placeholder="Full Name*" style={authStyles.input} />
       </View>
       <View style={authStyles.field}>
-        <TextInput value={phone} onChangeText={setPhone} placeholder="Phone Number*" style={authStyles.input} keyboardType="phone-pad" />
+        <TextInput
+          value={phone}
+          onChangeText={setPhone}
+          placeholder="Phone Number*"
+          style={authStyles.input}
+          keyboardType="phone-pad"
+        />
       </View>
       <View style={authStyles.field}>
-        <TextInput value={birthDate} onChangeText={setBirthDate} placeholder="Date of Birth* (mm/dd/yyyy)" style={authStyles.input} />
+        <TextInput
+          value={birthDate}
+          onChangeText={setBirthDate}
+          placeholder="Date of Birth* (mm/dd/yyyy)"
+          style={authStyles.input}
+        />
       </View>
       <View style={authStyles.field}>
-        <TextInput value={password} onChangeText={setPassword} placeholder="Password*" secureTextEntry style={authStyles.input} />
+        <TextInput
+          value={password}
+          onChangeText={setPassword}
+          placeholder="Password*"
+          secureTextEntry
+          style={authStyles.input}
+        />
       </View>
       <View style={authStyles.field}>
-        <TextInput value={confirmPassword} onChangeText={setConfirmPassword} placeholder="Confirm Password*" secureTextEntry style={authStyles.input} />
+        <TextInput
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+          placeholder="Confirm Password*"
+          secureTextEntry
+          style={authStyles.input}
+        />
       </View>
 
       <View style={styles.verifyCard}>
         <Text style={styles.verifyTitle}>Upload Files for Verification*</Text>
         <Text style={styles.verifySub}>Drop your ID here or tap browse. JPG, PNG, PDF up to 10MB.</Text>
 
-        <TouchableOpacity
-          style={styles.browseButton}
-          onPress={() => setVerificationFileName("government-id.jpg")}
-        >
+        <TouchableOpacity style={styles.browseButton} onPress={() => setVerificationFileName("government-id.jpg")}>
           <Text style={styles.browseButtonText}>Browse Files</Text>
         </TouchableOpacity>
 

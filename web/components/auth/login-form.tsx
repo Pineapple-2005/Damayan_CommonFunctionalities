@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useAuth } from "@/lib/auth-context";
 import styles from "./login-form.module.css";
 
@@ -11,7 +11,10 @@ type FormState = {
   email: string;
   password: string;
   showPassword: boolean;
+  rememberMe: boolean;
 };
+
+const REMEMBERED_EMAIL_KEY = "damayan-web-remembered-email";
 
 export function LoginForm() {
   const router = useRouter();
@@ -20,10 +23,25 @@ export function LoginForm() {
     email: "",
     password: "",
     showPassword: false,
+    rememberMe: false,
   });
   const [errors, setErrors] = useState<Partial<Record<"email" | "password", string>>>({});
   const [serverError, setServerError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const remembered = window.localStorage.getItem(REMEMBERED_EMAIL_KEY);
+
+    if (!remembered) {
+      return;
+    }
+
+    setForm((current) => ({
+      ...current,
+      email: remembered,
+      rememberMe: true,
+    }));
+  }, []);
 
   const validate = () => {
     const nextErrors: typeof errors = {};
@@ -56,6 +74,13 @@ export function LoginForm() {
 
     try {
       await login(form.email.trim(), form.password);
+
+      if (form.rememberMe) {
+        window.localStorage.setItem(REMEMBERED_EMAIL_KEY, form.email.trim());
+      } else {
+        window.localStorage.removeItem(REMEMBERED_EMAIL_KEY);
+      }
+
       router.push("/dashboard");
     } catch (error) {
       setServerError(error instanceof Error ? error.message : "Unable to log in.");
@@ -145,6 +170,20 @@ export function LoginForm() {
             </div>
 
             <div className={styles.forgotRow}>
+              <label className={styles.rememberRow}>
+                <input
+                  type="checkbox"
+                  checked={form.rememberMe}
+                  onChange={(event) =>
+                    setForm((current) => ({
+                      ...current,
+                      rememberMe: event.target.checked,
+                    }))
+                  }
+                />
+                <span>Remember me</span>
+              </label>
+
               <Link className={styles.forgot} href="/forgot-password">
                 Forgot Password?
               </Link>

@@ -139,7 +139,6 @@ export function ForgotPasswordScreen() {
       title={title}
       subtitle={subtitle}
       showBranding={false}
-      compactLogo
       headerTop={headerBack}
       footer={
         step === "success" ? null : (
@@ -267,8 +266,8 @@ export function ForgotPasswordScreen() {
       {step === "success" ? (
         <View style={styles.successWrap}>
           <Image
-            source={require("@/assets/icons/password-reset.png")}
-            style={styles.resetLogo}
+            source={require("@/assets/logos/logo.png")}
+            style={styles.successLogo}
             resizeMode="contain"
           />
           <TouchableOpacity style={authStyles.submit} onPress={() => router.replace("/login")}>
@@ -354,7 +353,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
   },
-  resetLogo: {
+  successLogo: {
     width: 96,
     height: 96,
     marginBottom: 14,
@@ -369,3 +368,4 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
   },
 });
+

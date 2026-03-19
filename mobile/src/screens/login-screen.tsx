@@ -1,21 +1,38 @@
 import { useRouter } from "expo-router";
-import { useState } from "react";
-import { ActivityIndicator, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { useEffect, useState } from "react";
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { AuthShell, authStyles } from "@/src/components/auth-shell";
 import { SocialRow } from "@/src/components/social-row";
 import { useAuth } from "@/src/providers/auth-provider";
 import { COLORS } from "@/src/theme";
 
+let rememberedMobileEmail = "";
+
 export function LoginScreen() {
   const router = useRouter();
   const { login } = useAuth();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(rememberedMobileEmail);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(Boolean(rememberedMobileEmail));
   const [error, setError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (rememberedMobileEmail) {
+      setEmail(rememberedMobileEmail);
+      setRememberMe(true);
+    }
+  }, []);
 
   const validate = () => {
     let valid = true;
@@ -54,6 +71,7 @@ export function LoginScreen() {
 
     try {
       await login(email.trim(), password);
+      rememberedMobileEmail = rememberMe ? email.trim() : "";
       router.replace("/dashboard");
     } catch (nextError) {
       setError(nextError instanceof Error ? nextError.message : "Unable to log in.");
@@ -122,7 +140,14 @@ export function LoginScreen() {
         {passwordError ? <Text style={authStyles.errorText}>{passwordError}</Text> : null}
       </View>
 
-      <View style={authStyles.rowEnd}>
+      <View style={styles.optionsRow}>
+        <TouchableOpacity style={styles.rememberWrap} onPress={() => setRememberMe((current) => !current)}>
+          <View style={[styles.checkbox, rememberMe ? styles.checkboxOn : null]}>
+            {rememberMe ? <Text style={styles.checkIcon}>x</Text> : null}
+          </View>
+          <Text style={styles.rememberText}>Remember me</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity onPress={() => router.push("/forgot-password")}>
           <Text style={authStyles.link}>Forgot Password?</Text>
         </TouchableOpacity>
@@ -144,4 +169,44 @@ export function LoginScreen() {
     </AuthShell>
   );
 }
+
+const styles = StyleSheet.create({
+  optionsRow: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 18,
+  },
+  rememberWrap: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  checkbox: {
+    width: 18,
+    height: 18,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: COLORS.inputBorder,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: COLORS.white,
+  },
+  checkboxOn: {
+    borderColor: COLORS.primary,
+    backgroundColor: COLORS.primary,
+  },
+  checkIcon: {
+    color: COLORS.white,
+    fontWeight: "700",
+    fontSize: 12,
+    lineHeight: 14,
+  },
+  rememberText: {
+    color: COLORS.textSoft,
+    fontSize: 12,
+    fontWeight: "600",
+  },
+});
 

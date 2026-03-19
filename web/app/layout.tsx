@@ -4,8 +4,13 @@ import { AuthProvider } from "@/lib/auth-context";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Damayan Web",
-  description: "Damayan web authentication flow.",
+  title: "Damayan",
+  description: "Damayan platform web interface.",
+  icons: {
+    icon: "/logos/logo.png",
+    shortcut: "/logos/logo.png",
+    apple: "/logos/logo.png",
+  },
 };
 
 export default function RootLayout({

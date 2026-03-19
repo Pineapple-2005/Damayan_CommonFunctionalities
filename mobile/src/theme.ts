@@ -9,4 +9,7 @@ export const COLORS = {
   danger: "#FF4444",
   success: "#26744D",
   panel: "rgba(255,255,255,0.96)",
+  dmayanBlue: "#3E5A99",
+  dmayanBlueSoft: "#A0C1F9",
+  dmayanCanvas: "#F5F6F8",
 };
